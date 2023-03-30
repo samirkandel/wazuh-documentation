@@ -90,6 +90,53 @@ The following example of a ``~/.aws/config`` file sets retry parameters for the 
    retry_mode=standard
 
 
+Additional configuration
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Wazuh supports additional configuration found in the .aws/config file, the supported keys are the primary keys stated in the `boto3 configuration <https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html>`_. Supported keys are:
+
+- region_name.
+- signature_version.
+- s3
+- proxies
+- proxies_config
+- retries
+
+The following example of a ``~/.aws/config`` file sets the supported configuration for the *dev* profile 
+
+.. code-block:: ini
+   
+   [dev]
+   region = us-east-1
+   output = json
+
+   dev.s3.max_concurrent_requests = 10
+   dev.s3.max_queue_size = 1000
+   dev.s3.multipart_threshold = 64MB
+   dev.s3.multipart_chunksize = 16MB
+   dev.s3.max_bandwidth = 50MB/s
+   dev.s3.use_accelerate_endpoint = true
+   dev.s3.addressing_style = virtual
+   
+   dev.proxy.host = proxy.example.com
+   dev.proxy.port = 8080
+   dev.proxy.username = your-proxy-username
+   dev.proxy.password = your-proxy-password
+   
+   dev.proxy.ca_bundle = /path/to/ca_bundle.pem
+   dev.proxy.client_cert = /path/to/client_cert.pem
+   dev.proxy.use_forwarding_for_https = true
+   
+   dev.signature_version = s3v4
+   max_attempts = 5
+   retry_mode = standard
+   
+
+.. note::
+   To configure multiple profile for the integration, declare each profile in the ``~/.aws/config`` file using the same pattern as before.
+   If no profile is declared in the module configuration, the *default* profile will be used. 
+
+  
 Configuring multiple services
 -----------------------------
 
@@ -222,3 +269,4 @@ The following is an example of a valid configuration.
     </service>
 
   </wodle>
+
