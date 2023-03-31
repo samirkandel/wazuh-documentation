@@ -93,7 +93,7 @@ The following example of a ``~/.aws/config`` file sets retry parameters for the 
 Additional configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Wazuh supports additional configuration found in the .aws/config file, the supported keys are the primary keys stated in the `boto3 configuration <https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html>`_. Supported keys are:
+Wazuh supports additional configuration options found in the ``.aws/config file``. The supported keys are the primary keys stated in the `boto3 configuration <https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html>`_. Supported keys are:
 
 - region_name.
 - signature_version.
@@ -102,7 +102,7 @@ Wazuh supports additional configuration found in the .aws/config file, the suppo
 - proxies_config
 - retries
 
-The following example of a ``~/.aws/config`` file sets the supported configuration for the *dev* profile 
+The following example of a ``~/.aws/config`` file sets the supported configuration for the *dev* profile:
 
 .. code-block:: ini
    
@@ -134,7 +134,7 @@ The following example of a ``~/.aws/config`` file sets the supported configurati
 
 .. note::
    To configure multiple profile for the integration, declare each profile in the ``~/.aws/config`` file using the same pattern as before.
-   If no profile is declared in the module configuration, the *default* profile will be used. 
+   If no profile is declared in the module configuration, the *default* profile is used: 
 
   
 Configuring multiple services
